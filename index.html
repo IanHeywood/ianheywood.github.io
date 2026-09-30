@@ -1,67 +1,521 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Your Name</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ian Heywood — radio astronomer working on telescope commissioning, calibration, imaging and survey science.">
+  <title>Ian Heywood</title>
+
   <style>
+    :root {
+      --background: #f2f2ef;
+      --text: #202020;
+      --muted: #6a6a66;
+      --line: #d2d2cc;
+      --link: #7c4a6b;
+      --content-width: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: sans-serif;
-      max-width: 700px;
-      margin: 3em auto;
-      padding: 0 1em;
-      line-height: 1.6;
-      color: #333;
-      background-color: #fff;
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
     }
-    h1, h2 {
-      font-weight: normal;
+
+    .page {
+      width: min(calc(100% - 40px), var(--content-width));
+      margin: 0 auto;
+      padding: 64px 0 48px;
     }
+
+    header {
+      margin-bottom: 56px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin: 0 0 0 -0.05em;
+      font-size: clamp(2.4rem, 8vw, 3rem);
+      font-weight: 500;
+      letter-spacing: 0.0em;
+    }
+
+    .subtitle {
+      max-width: 640px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
     nav {
-      margin-bottom: 2em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-top: 22px;
     }
+     
+    nav a,
+    a {
+      color: var(--link);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
     nav a {
-      margin-right: 1em;
       text-decoration: none;
-      color: #007acc;
+      border-bottom: 1px solid transparent;
     }
-    nav a:hover {
-      text-decoration: underline;
+
+    nav a:hover,
+    nav a:focus {
+      border-bottom-color: currentColor;
     }
-    footer {
-      margin-top: 4em;
-      font-size: 0.9em;
-      color: #888;
+
+    section {
+      margin-bottom: 52px;
+      scroll-margin-top: 24px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      padding-bottom: 8px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    .career-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .career-item {
+      display: grid;
+      grid-template-columns: 135px minmax(0, 1fr);
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .career-item:first-child {
+      padding-top: 0;
+    }
+
+    .career-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .career-item p,
+    .project p {
+      margin-bottom: 0;
+    }
+
+    .intro {
+      max-width: 42em;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    
+    #projects h2 {
+      margin-bottom: 32px;
+    }
+
+    .project {
+      max-width: 42em;
+      margin-bottom: 60px;
+    }
+
+    .project h3 {
+      margin-bottom: 12px;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Optional figures: uncomment the HTML placeholders below if wanted. */
+    .project-figure {
+      margin: 24px 0 0;
+    }
+
+    .project-figure img {
+      display: block;
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+    }
+
+    .project-figure figcaption {
+      max-width: 560px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+
+    /* Optional compact references for project papers, software and media. */
+    .project-ref {
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .project-more {
+      margin-top: 10px !important;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .project-more a {
+      color: var(--link);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 16px;
+      }
+
+      .page {
+        width: min(calc(100% - 28px), var(--content-width));
+        padding-top: 40px;
+      }
+
+      header {
+        margin-bottom: 44px;
+      }
+
+      section {
+        margin-bottom: 44px;
+      }
+
+      .career-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        padding: 20px 0;
+      }
+
+      .date {
+        white-space: normal;
+      }
+
+      #projects h2 {
+        margin-bottom: 28px;
+      }
+
+      .project {
+        margin-bottom: 46px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+      }
+
+      nav {
+        display: none;
+      }
+
+      a {
+        color: inherit;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Website template</h1>
-  <p>This is a template website</p>
+  <div class="page">
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <header>
+      <h1>Ian Heywood</h1>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>About.</p>
-  </section>
+      <nav aria-label="Page sections">
+        <a href="#about">About</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#projects">Projects</a>
+        
+      </nav>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Project 1:</strong> About project one.</li>
-      <li><strong>Project 2:</strong> About project two.</li>
-    </ul>
-  </section>
+    </header>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>You can reach me at: <a href="mailto:you@example.com">you@example.com</a></p>
-  </section>
+    <main>
 
+      <section id="about">
+        <h2>Hello</h2>
+
+        <p>
+          I am a radio astronomer with experience in calibration,
+          high-dynamic-range imaging, telescope commissioning and survey
+          science. I have made major contributions to the early scientific
+          exploitation of cutting-edge radio telescopes including MeerKAT and ASKAP.
+        </p>
+
+        <p>
+          I develop novel methods and tools to help researchers rapidly turn large-scale
+          interferometric observations into reliable scientific results.
+          I work closely with many students and early-career colleagues,
+          particularly within South Africa's radio astronomy community.
+        </p>
+
+        <p>
+          You can contact me via email at 
+          <a href="mailto:ian.heywood@skao.int">ian.heywood@skao.int</a>.
+        </p>
+
+        <p>
+          A list of my publications on the ADS can be found <a href="https://tiny.cc/heywood-papers">here</a>. My GitHub pages can be found <a href="https://github.com/IanHeywood/">here</a>.
+        </p>
+
+        <p>
+          Thanks for visiting.
+        </p>
+
+      </section>
+
+
+      <section id="timeline">
+        <h2>Presently</h2>
+
+        <div class="career-list">
+
+          <article class="career-item">
+            <div class="date">2025 –</div>
+            <div>
+              <h3>Senior Commissioning Scientist for SKA-Mid</h3>
+              <p>
+                Square Kilometre Array Observatory, UK
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2025 –</div>
+            <div>
+              <h3>Honorary Professor in Astronomy, Astrophysics and Cosmology</h3>
+              <p>
+                Faculty of Science and Engineering, The University of Manchester, UK
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2025 –</div>
+            <div>
+              <h3>Academic Visitor</h3>
+              <p>
+                Department of Physics, The University of Oxford, UK
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2024 –</div>
+            <div>
+              <h3>Research Associate in Astrophysics</h3>
+              <p>
+                Green Templeton College, The University of Oxford, UK
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2019 –</div>
+            <div>
+              <h3>Distinguished Research Fellow</h3>
+              <p>
+                South African Radio Astronomy Observatory (SARAO), South Africa
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2018 – </div>
+            <div>
+              <h3>Visiting Professor</h3>
+              <p>
+                Department of Physics and Electronics, Rhodes University, South Africa
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+     <section>
+        <h2>Previously</h2>
+
+        <div class="career-list">
+
+          <article class="career-item">
+            <div class="date">2019 – 2025</div>
+            <div>
+              <h3>Senior Researcher in Radio Astronomy</h3>
+              <p>
+                Department of Physics, The University of Oxford, UK
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2017 – 2019</div>
+            <div>
+              <h3>Hintze Fellow</h3>
+              <p>
+                Department of Physics, The University of Oxford, UK
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2016 – 2017</div>
+            <div>
+              <h3>Facilities Program Director for Astrophysics ('Head of Astrophysics')</h3>
+              <p>
+                CSIRO Astronomy and Space Science, Australia
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2013 – 2017</div>
+            <div>
+              <h3>Senior Research Scientist</h3>
+              <p>
+                CSIRO Astronomy and Space Science, Australia
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2004 – 2013</div>
+            <div>
+              <h3>Postdoctoral Research Associate</h3>
+              <p>
+                Department of Physics, The University of Oxford, UK
+              </p>
+            </div>
+          </article>
+
+          <article class="career-item">
+            <div class="date">2000 – 2004</div>
+            <div>
+              <h3>PhD in Astrophysics</h3>
+              <p>
+                Jodrell Bank Observatory, The University of Manchester, UK
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Selected work</h2>
+
+        <p class="intro">
+          My work revolves around the technical aspects of radio interferometry, particularly in devising new accelerated and automated methods for processing and imaging the huge volumes of data that modern radio instrumentation produces. I have focused almost exclusively on this technique, and that has naturally led to a broad range of astrophysical research interests.
+        </p>
+
+        <article class="project">
+          <h3>Extragalactic radio surveys</h3>
+          <p>
+            I have led the observational planning and production of science-ready continuum [1,2,3] and spectral-line [4] data products for several large-scale extragalactic radio surveys, primarily using the Karl G. Jansky Very Large Array, ASKAP and MeerKAT. I publicly released and continue to support the data-processing pipeline [5] that I designed for MeerKAT's MIGHTEE survey, which has since been used to process many hundreds of MeerKAT observations.
+          </p>
+
+          <div class="project-more">
+            <div><a href="https://academic.oup.com/mnras/article/460/4/4433/2609156">[1]</a> <i>MNRAS</i>, 460, 4, 4433, 2016</div>
+            <div><a href="https://iopscience.iop.org/article/10.3847/1538-4357/abdf61">[2]</a> <i>The Astrophysical Journal</i>, 910, 105, 2021</div>
+            <div><a href="https://academic.oup.com/mnras/article/509/2/2150/6407529">[3]</a> <i>MNRAS</i>, 509, 2, 2150, 2022</div>
+            <div><a href="https://academic.oup.com/mnras/article/534/1/76/7750045">[4]</a> <i>MNRAS</i>, 534, 1, 76, 2024</div>
+            <div><a href="https://ui.adsabs.harvard.edu/abs/2020ascl.soft09003H/abstract">[5]</a> <i>ASCL</i> 2009, 003, 2020</div>
+          </div>
+
+        </article>
+
+        <article class="project">
+          <h3>The Galactic Centre</h3>
+          <p>
+            I was responsible for the design, data processing and publication of the MeerKAT legacy survey of the Galactic Centre, which provided an unprecedented radio view of this key region. Early observations revealed a 1,400 light year tall bipolar structure, providing evidence for an energetic outburst in the region several million years ago, and resulted in the first scientific publication from the full 64-antenna MeerKAT array [1]. The completed survey [2] increased the number of known non-thermal radio filaments around the Galactic Centre by an order of magnitude, and the resulting panoramic image received widespread international media coverage [3,4].
+          </p>
+
+          <div class="project-more">
+            <div><a href="https://www.nature.com/articles/s41586-019-1532-5">[1]</a> <i>Nature</i>, 573, 235–237, 2019</div>
+            <div><a href="https://iopscience.iop.org/article/10.3847/1538-4357/ac449a">[2]</a> <i>The Astrophysical Journal</i>, 925, 165, 2022</div>
+            <div><a href="https://archive.is/Ztmve">[3]</a> <i>New York Times</i>, 31 January 2022</div>
+            <div><a href="https://www.nationalgeographic.com/magazine/issue/october-2023">[4]</a> <i>National Geographic</i>, October 2023</div>
+          </div>
+
+        </article>
+
+        <article class="project">
+          <h3>Time domain imaging</h3>
+          <p>
+            The discovery space that is unlocked by time series imaging has been historically somewhat overlooked. I have been working on this method for the last few years. Highlights from this work include the discovery of a new millisecond pulsar (initially a candidate, now confirmed) in the globular cluster 47 Tucanae [1], the discovery of an unusually slow radio pulsar with a 76 second period [2], the discovery of what is only the second known white dwarf pulsar system [3], and the verification of the commensal Breakthrough Listen SETI backend on the MeerKAT telescope by imaging the James Webb Space Telescope via emissions from its S-band telemetry downlink transmitter [4]. This research has culminated in the TRON project which I co-lead, which is now systematically and automatically mining the entire MeerKAT archive for transient and anomalous phenomena.
+          </p>
+
+          <div class="project-more">
+              <div><a href="https://academic.oup.com/mnrasl/article/525/1/L76/7221660">[1]</a> <i>MNRAS Letters</i>, 525, 76, 2023</div>
+              <div><a href="https://www.nature.com/articles/s41550-022-01688-x">[2]</a> <i>Nature Astronomy</i>, 6, 828, 2022</div>
+              <div><a href="https://www.nature.com/articles/s41550-023-01995-x">[3]</a> <i>Nature Astronomy</i>, 7, 931, 2023</div>
+              <div><a href="https://arxiv.org/abs/2607.23651">[4]</a> <i>arXiv</i>, 2607.23651, 2026</div>
+          </div>
+
+        </article>
+
+        <article class="project">
+          <h3>Telescope commissioning</h3>
+          <p>
+            I have played a leading technical role in commissioning three of the world's foremost radio interferometers: ASKAP, MeerKAT and currently SKA-Mid. Commissioning involves verifying a telescope's performance against its design specifications and diagnosing the technical effects that limit it, largely through on-sky observations. It's kind of analogous to sea trials for a boat. During ASKAP's commissioning I devised methods to probe the shapes of its multiple electronically-formed beams, and quantified the sensitivity penalty caused by beam-to-beam noise correlation. I identified direction-dependent effects caused by beam-to-beam differences between antennas as the principal limit on imaging dynamic range, and developed a calibration approach to mitigate it. I have worked with the MeerKAT project since its early KAT-7 prototype through to verifying the on-sky performance of the full 64-dish array ahead of its large scale survey commitments. I am currently Senior Commissioning Scientist for SKA-Mid, validating the interferometer's performance against its scientific requirements in close collaboration with its construction, engineering and science teams.
+          </p>
+        </article>
+
+
+
+      </section>
+
+    </main>
+
+
+  </div>
 </body>
 </html>
